@@ -10,14 +10,14 @@ import {BrowseRouter,Routes,Route, BrowserRouter} from "react-router-dom";
 
 function App() {
   return (
-          <BrowserRouter> v
+          <BrowserRouter>
            <NavBar/>
           <Routes>
                 <Route path="/" element={
                   <>
                    <Banner/>
                    <Movies/>
-                  <Pagination/>
+                  {/* { <Pagination/>} */}
                   </>
                
                 }/>
