@@ -5,11 +5,18 @@ import { Oval } from 'react-loader-spinner';
 import Pagination from './Pagination';
 
 function Movies() {
+    let genreids = {
+        28: 'Action',
+        12: 'Adventure',
+        16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History',
+        27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi', 10770: 'TV', 53: 'Thriller', 10752: 'War', 37: 'Western'
+      }
 
     const [movies, setMovies] = useState([])
     const [page, setPage] = useState(1)
     const [hover, setHover] = useState('')
     const [favourites, setFavourites] = useState([])
+    const [show,setShow]=useState();
 
     function goAhead() {
         setPage(page + 1)
@@ -65,6 +72,8 @@ function Movies() {
                     </div> :
                     <div className="flex flex-wrap justify-center">
                         {
+
+
                             movies.map((movie) => (
                                 <div className={`
                                     bg-[url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})] 
@@ -86,34 +95,48 @@ function Movies() {
                                         setHover("")}
                                 >
                                     {
+
                                         hover == movie.id && <>{
                                             !favourites.find((m) => m.id == movie.id) ?
-                                                <div className='absolute top-2 right-2
+                                                <div className='absolute bottom right-1
                                     p-2
                                     bg-gray-800
-                                    rounded-xl
+                                    rounded-lg
                                     text-xl
                                     cursor-pointer
                                     '
                                                     onClick={() => add(movie)}
                                                 >😍</div> :
-                                                <div className='absolute top-2 right-2
+                                                <div className='absolute bottom right-1
                                     p-2
                                     bg-gray-800
-                                    rounded-xl
+                                    rounded-lg
                                     text-xl
                                     cursor-pointer
                                     '
                                                     onClick={() => del(movie)}
                                                 >❌</div>
+                                        
+                                               
+        
+                                                    
+                                                }
 
-                                        }
+
+                                            
+                                        
+                                        
+                                    
 
 
                                         </>
                                     }
+                                      
+                                     
+                                    <div className="w-full bg-gray-900 text-white py-2 font-bold text-center rounded-b-xl">{movie.title}</div>
+                                    <div className="w-full bg-gray-900 text-white  font-bold text-center rounded-b-xl top-0 absolute">{genreids[movie.genre_ids[0]]}</div>
 
-                                    <div className="w-full bg-gray-900 text-white py-2 font-bold text-center rounded-b-xl">{movie.title} </div>
+
                                 </div>
                             ))
                         }
