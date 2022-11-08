@@ -12,9 +12,9 @@ function Movies() {
         27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Sci-Fi', 10770: 'TV', 53: 'Thriller', 10752: 'War', 37: 'Western'
       }
 
-    const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState([])   //for fetching the movie
     const [page, setPage] = useState(1)
-    const [hover, setHover] = useState('')
+    const [hover, setHover] = useState('') 
     const [favourites, setFavourites] = useState([])
     const [show,setShow]=useState();
 
@@ -145,6 +145,7 @@ function Movies() {
             }
 
         </div>
+        {/* connecting and passing the value to the pagination */}
         <Pagination pageProp={page} goBack={goBack} goAhead={goAhead} />
     </>
 }
